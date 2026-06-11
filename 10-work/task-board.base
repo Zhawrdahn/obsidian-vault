@@ -38,6 +38,7 @@ views:
       - property: priority
         direction: ASC
     columnSize:
+      file.name: 239
       note.due: 138
   - type: cards
     name: Board
