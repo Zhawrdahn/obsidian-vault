@@ -1,0 +1,54 @@
+filters:
+  and:
+    - type == "task"
+    - '!file.inFolder("90-templates")'
+formulas:
+  days_left: if(due, (due - now()).days, "")
+  flag: if(priority == "urgent", "🔴", if(priority == "high", "🟠", ""))
+properties:
+  status:
+    displayName: Status
+  priority:
+    displayName: Priority
+  area:
+    displayName: Area
+  due:
+    displayName: Due
+  ado_id:
+    displayName: ADO
+  formula.days_left:
+    displayName: Days Left
+views:
+  - type: table
+    name: All Tasks
+    order:
+      - formula.flag
+      - file.name
+      - status
+      - priority
+      - area
+      - ado_id
+      - due
+      - formula.days_left
+    sort:
+      - property: file.name
+        direction: DESC
+      - property: formula.flag
+        direction: DESC
+      - property: priority
+        direction: ASC
+    columnSize:
+      note.due: 138
+  - type: cards
+    name: Board
+    groupBy:
+      property: status
+      direction: ASC
+    order:
+      - file.name
+      - priority
+      - area
+      - due
+    sort:
+      - property: priority
+        direction: ASC
