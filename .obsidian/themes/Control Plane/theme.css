@@ -1,0 +1,318 @@
+/* ============================================================
+   Control Plane — a platform engineer's Obsidian theme
+   Graphite surfaces, disciplined type, burnt orange used
+   sparingly. Linear/GitHub lineage, jord.dev palette.
+   Dark is the main event; light is GitHub-clean.
+   ============================================================ */
+
+body {
+  --font-interface-theme: "Hanken Grotesk", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-text-theme: "Hanken Grotesk", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-monospace-theme: "JetBrains Mono", "SF Mono", ui-monospace, Menlo, monospace;
+  --h1-size: 1.7em;
+  --h2-size: 1.35em;
+  --h3-size: 1.12em;
+  --h4-size: 1em;
+  --h1-weight: 650;
+  --h2-weight: 650;
+  --h3-weight: 600;
+  --bold-weight: 600;
+  --line-height-normal: 1.6;
+  --radius-s: 5px;
+  --radius-m: 8px;
+  --radius-l: 10px;
+  --tab-radius: 6px;
+  --checkbox-radius: 4px;
+  --checkbox-size: 16px;
+  --input-radius: 6px;
+}
+
+/* ---------------- dark: graphite ---------------- */
+.theme-dark {
+  --color-base-00: #101113;          /* editor */
+  --color-base-05: #131517;
+  --color-base-10: #0c0d0f;          /* sidebars */
+  --color-base-20: #16181c;          /* raised */
+  --color-base-25: #1d2026;          /* borders */
+  --color-base-30: #262a31;
+  --color-base-35: #343943;
+  --color-base-40: #434956;
+  --color-base-50: #5c6370;
+  --color-base-60: #8b919c;          /* muted */
+  --color-base-70: #c9cdd4;
+  --color-base-100: #e6e8eb;         /* ink */
+
+  --background-primary: #101113;
+  --background-primary-alt: #131517;
+  --background-secondary: #0c0d0f;
+  --background-secondary-alt: #0a0b0c;
+  --background-modifier-border: #1d2026;
+  --background-modifier-border-hover: #262a31;
+  --background-modifier-border-focus: #f0651a;
+  --background-modifier-hover: rgba(230, 232, 235, 0.04);
+  --background-modifier-active-hover: rgba(240, 101, 26, 0.10);
+
+  --text-normal: #e6e8eb;
+  --text-muted: #8b919c;
+  --text-faint: #5c6370;
+  --text-on-accent: #0c0d0f;
+  --text-accent: #f0651a;            /* burnt orange */
+  --text-accent-hover: #ff7a30;
+  --link-color: #f0651a;
+  --link-color-hover: #ff7a30;
+  --link-external-color: #f0651a;
+  --link-unresolved-color: #8b6a58;
+
+  --interactive-accent: #f0651a;
+  --interactive-accent-hover: #ff7a30;
+  --interactive-normal: #16181c;
+  --interactive-hover: #1d2026;
+
+  --text-selection: rgba(240, 101, 26, 0.22);
+  --text-highlight-bg: rgba(240, 101, 26, 0.18);
+
+  --code-background: #16181c;
+  --code-normal: #c9cdd4;
+  --code-comment: #5c6370;
+  --code-string: #58b97e;            /* teal-green */
+  --code-keyword: #f0651a;
+  --code-function: #6ea8ff;
+  --code-value: #d2a8ff;
+  --code-property: #79c0e8;
+
+  --hr-color: #1d2026;
+  --blockquote-border-color: #343943;
+  --embed-border-left: 2px solid #343943;
+
+  --tag-background: rgba(240, 101, 26, 0.10);
+  --tag-color: #f0651a;
+  --tag-background-hover: rgba(240, 101, 26, 0.18);
+  --tag-color-hover: #ff7a30;
+
+  --checkbox-color: #f0651a;
+  --checkbox-color-hover: #ff7a30;
+  --checkbox-border-color: #434956;
+  --checklist-done-color: #5c6370;
+
+  --titlebar-background: #0c0d0f;
+  --titlebar-background-focused: #0c0d0f;
+  --tab-background-active: #101113;
+  --tab-text-color-focused-active-current: #e6e8eb;
+  --ribbon-background: #0c0d0f;
+  --divider-color: #1d2026;
+  --scrollbar-thumb-bg: rgba(139, 145, 156, 0.18);
+  --scrollbar-active-thumb-bg: rgba(139, 145, 156, 0.35);
+
+  --table-border-color: #1d2026;
+  --table-header-background: #131517;
+  --table-row-alt-background: rgba(19, 21, 23, 0.6);
+
+  --graph-node: #8b919c;
+  --graph-node-focused: #f0651a;
+  --graph-node-tag: #58b97e;
+  --graph-node-attachment: #6ea8ff;
+  --graph-line: #262a31;
+}
+
+/* ---------------- light: github-clean ---------------- */
+.theme-light {
+  --color-base-00: #ffffff;
+  --color-base-05: #fafbfc;
+  --color-base-10: #f6f8fa;
+  --color-base-20: #eef1f4;
+  --color-base-25: #e4e8ec;
+  --color-base-30: #d4d9df;
+  --color-base-40: #aeb6bf;
+  --color-base-50: #828c97;
+  --color-base-60: #59636e;
+  --color-base-70: #30363d;
+  --color-base-100: #1f2328;
+
+  --background-primary: #ffffff;
+  --background-primary-alt: #fafbfc;
+  --background-secondary: #f6f8fa;
+  --background-secondary-alt: #eef1f4;
+  --background-modifier-border: #e4e8ec;
+  --background-modifier-border-hover: #d4d9df;
+  --background-modifier-border-focus: #e8590c;
+  --background-modifier-hover: rgba(31, 35, 40, 0.04);
+
+  --text-normal: #1f2328;
+  --text-muted: #59636e;
+  --text-faint: #828c97;
+  --text-on-accent: #ffffff;
+  --text-accent: #e8590c;
+  --text-accent-hover: #c84a08;
+  --link-color: #e8590c;
+  --link-color-hover: #c84a08;
+
+  --interactive-accent: #e8590c;
+  --interactive-accent-hover: #c84a08;
+  --interactive-normal: #f6f8fa;
+  --interactive-hover: #eef1f4;
+
+  --text-selection: rgba(232, 89, 12, 0.16);
+  --text-highlight-bg: rgba(232, 89, 12, 0.14);
+
+  --code-background: #f6f8fa;
+  --code-normal: #30363d;
+  --code-comment: #828c97;
+  --code-string: #1a7f37;
+  --code-keyword: #e8590c;
+  --code-function: #0550ae;
+  --code-value: #8250df;
+
+  --hr-color: #e4e8ec;
+  --blockquote-border-color: #d4d9df;
+  --tag-background: rgba(232, 89, 12, 0.08);
+  --tag-color: #c84a08;
+  --checkbox-color: #e8590c;
+  --checkbox-border-color: #aeb6bf;
+  --titlebar-background: #f6f8fa;
+  --table-border-color: #e4e8ec;
+  --table-header-background: #f6f8fa;
+  --graph-node: #59636e;
+  --graph-node-focused: #e8590c;
+  --graph-line: #e4e8ec;
+}
+
+/* ---------------- structure & detail ---------------- */
+
+/* headings: tight, with a quiet mono section marker on h2 */
+.markdown-preview-view h1, .markdown-rendered h1, .inline-title {
+  letter-spacing: -0.015em;
+}
+.markdown-preview-view h2, .markdown-rendered h2 {
+  letter-spacing: -0.01em;
+  padding-bottom: 0.25em;
+  border-bottom: 1px solid var(--hr-color);
+}
+/* h6 = mono kicker label, matches dashboards */
+.markdown-preview-view h6, .markdown-rendered h6, .cm-header-6 {
+  font-family: var(--font-monospace-theme);
+  font-size: 0.7em;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* code: the centrepiece for an engineer */
+.markdown-rendered pre, .cm-s-obsidian .HyperMD-codeblock {
+  font-size: 0.86em;
+  line-height: 1.55;
+}
+.markdown-rendered pre {
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-m);
+}
+.markdown-rendered code:not(pre code), .cm-s-obsidian span.cm-inline-code {
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+  font-size: 0.85em;
+  border: 1px solid var(--background-modifier-border);
+}
+/* language badge stays subtle */
+.markdown-rendered pre .code-block-flair {
+  font-family: var(--font-monospace-theme);
+  font-size: 0.7em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+/* tags: bordered mono chips, GitHub-label style */
+a.tag {
+  font-family: var(--font-monospace-theme);
+  font-size: 0.7em;
+  letter-spacing: 0.06em;
+  border: 1px solid color-mix(in srgb, var(--text-accent) 35%, transparent);
+  border-radius: 999px;
+  padding: 0.1em 0.65em;
+  text-decoration: none;
+}
+
+/* tables: hairline, mono headers */
+.markdown-rendered table { border-collapse: collapse; font-size: 0.95em; }
+.markdown-rendered th {
+  font-family: var(--font-monospace-theme);
+  font-size: 0.72em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+.markdown-rendered th, .markdown-rendered td { padding: 6px 12px; }
+
+/* blockquotes: flat, structural */
+.markdown-rendered blockquote {
+  border-radius: 0;
+  padding: 0.2em 1em;
+  color: var(--text-muted);
+}
+
+/* callouts: muted bodies, coloured rails only */
+.callout {
+  border-radius: var(--radius-m);
+  background: var(--background-primary-alt);
+  border: 1px solid var(--background-modifier-border);
+  border-left: 3px solid rgb(var(--callout-color));
+}
+.callout[data-callout="note"], .callout[data-callout="info"] { --callout-color: 110, 168, 255; }
+.callout[data-callout="tip"], .callout[data-callout="success"] { --callout-color: 88, 185, 126; }
+.callout[data-callout="warning"] { --callout-color: 240, 101, 26; }
+.callout[data-callout="danger"], .callout[data-callout="error"], .callout[data-callout="bug"] { --callout-color: 229, 83, 75; }
+.callout[data-callout="example"] { --callout-color: 210, 168, 255; }
+.callout-title { font-weight: 600; }
+
+/* editor: active line + focus discipline */
+.cm-s-obsidian .cm-active-line, .markdown-source-view .cm-active.cm-line {
+  background: rgba(139, 145, 156, 0.06);
+}
+
+/* file explorer: quiet rows, orange rail on the active file */
+.nav-file-title, .nav-folder-title { border-radius: var(--radius-s); padding-top: 3px; padding-bottom: 3px; }
+.nav-folder-title { font-weight: 600; font-size: 0.95em; }
+.nav-file-title.is-active {
+  background: var(--background-modifier-active-hover);
+  box-shadow: inset 2px 0 0 var(--text-accent);
+  color: var(--text-normal);
+}
+
+/* tabs: Linear-flat */
+.workspace-tab-header { font-size: 0.92em; }
+.workspace-tab-header.is-active::after {
+  content: "";
+  position: absolute;
+  left: 8px; right: 8px; bottom: 0;
+  height: 2px;
+  background: var(--text-accent);
+  border-radius: 2px;
+}
+
+/* status bar: terminal strip */
+.status-bar {
+  font-family: var(--font-monospace-theme);
+  font-size: 10.5px;
+  letter-spacing: 0.05em;
+  background: var(--background-secondary);
+  border-top: 1px solid var(--divider-color);
+  color: var(--text-faint);
+}
+
+/* properties: mono keys, like YAML should look */
+.metadata-property-key-input, .metadata-property-key {
+  font-family: var(--font-monospace-theme);
+  font-size: 0.78em;
+  letter-spacing: 0.04em;
+}
+
+/* embeds: bordered, no theatrics */
+.markdown-embed {
+  background: var(--background-primary-alt);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-m);
+}
+
+/* search/highlight focus ring consistency */
+.is-flashing { background: rgba(240, 101, 26, 0.15) !important; }
