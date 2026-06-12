@@ -1,0 +1,420 @@
+/* ============================================================
+   Synthwave Home — Obsidian CSS snippet
+   Applies only to notes with `cssclasses: synthwave-home`
+   Drop in .obsidian/snippets/ and enable in Appearance settings
+   ============================================================ */
+
+.synthwave-home {
+  --sw-bg: #0a0614;
+  --sw-panel: rgba(20, 12, 40, 0.5);
+  --sw-line: rgba(255, 255, 255, 0.07);
+  --sw-ink: #ece6ff;
+  --sw-ink-2: #8d83b3;
+  --sw-ink-3: #5c5380;
+  --sw-magenta: #ff2d95;
+  --sw-cyan: #1ee3ff;
+  --sw-violet: #8b5cf6;
+  --sw-amber: #ffb84d;
+  --sw-lime: #7dff7a;
+  --sw-pink: #ff7ad9;
+  --sw-mono: "JetBrains Mono", "SF Mono", ui-monospace, Menlo, monospace;
+}
+
+/* ---------- take over the reading view ---------- */
+.markdown-preview-view.synthwave-home,
+.markdown-source-view.synthwave-home {
+  background: var(--sw-bg);
+  padding: 0 !important;
+  --file-line-width: 100%;
+}
+/* kill readable line length for this note only — reading view */
+.markdown-preview-view.synthwave-home .markdown-preview-sizer,
+.markdown-preview-view.is-readable-line-width.synthwave-home .markdown-preview-sizer {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+/* and live preview, in case the note is viewed there */
+.markdown-source-view.synthwave-home .cm-sizer,
+.markdown-source-view.synthwave-home .cm-content {
+  max-width: 100% !important;
+}
+.synthwave-home .inline-title,
+.synthwave-home .metadata-container,
+.synthwave-home .frontmatter { display: none !important; }
+.synthwave-home p { margin: 0; }
+.synthwave-home a { text-decoration: none; }
+.synthwave-home a:hover { text-decoration: none; }
+
+/* ---------- stage ---------- */
+.synthwave-home .sw-root {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  background: var(--sw-bg);
+  color: var(--sw-ink);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  justify-content: center;
+}
+.synthwave-home .mono { font-family: var(--sw-mono); }
+
+/* ---------- atmosphere ---------- */
+.synthwave-home .sw-sky {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(700px 420px at 50% -8%, rgba(255,45,149,0.18), transparent 65%),
+    radial-gradient(900px 500px at 90% 110%, rgba(30,227,255,0.08), transparent 60%),
+    radial-gradient(700px 500px at 5% 100%, rgba(139,92,246,0.12), transparent 60%);
+}
+.synthwave-home .sw-horizon {
+  position: absolute; left: 50%; bottom: -120px; z-index: 0;
+  width: 160vw; height: 380px;
+  transform: translateX(-50%) perspective(420px) rotateX(62deg);
+  transform-origin: center top;
+  background-image:
+    linear-gradient(rgba(255,45,149,0.22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,45,149,0.22) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 75%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 75%, transparent);
+  pointer-events: none;
+  animation: sw-gridflow 3.2s linear infinite;
+}
+@keyframes sw-gridflow { to { background-position: 0 56px, 0 0; } }
+.synthwave-home .sw-sun {
+  position: absolute; left: 50%; bottom: 150px; z-index: 0;
+  width: 240px; height: 240px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: linear-gradient(#ffb84d, #ff2d95 70%);
+  filter: blur(2px);
+  opacity: 0.15;
+  -webkit-mask-image: repeating-linear-gradient(to bottom, #000 0 14px, transparent 14px 19px);
+  mask-image: repeating-linear-gradient(to bottom, #000 0 14px, transparent 14px 19px);
+  pointer-events: none;
+}
+.synthwave-home .sw-scanlines {
+  position: absolute; inset: 0; z-index: 5; pointer-events: none;
+  background: repeating-linear-gradient(to bottom, rgba(0,0,0,0.22) 0 1px, transparent 1px 3px);
+  opacity: 0.45;
+  mix-blend-mode: multiply;
+}
+.synthwave-home .sw-grain {
+  position: absolute; inset: -50%; z-index: 5; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  opacity: 0.07;
+  animation: sw-grain 0.6s steps(4) infinite;
+}
+@keyframes sw-grain {
+  0% { transform: translate(0,0); } 25% { transform: translate(-2%,1%); }
+  50% { transform: translate(1%,-2%); } 75% { transform: translate(-1%,2%); }
+  100% { transform: translate(2%,-1%); }
+}
+.synthwave-home .sw-vignette {
+  position: absolute; inset: 0; z-index: 4; pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(5,2,12,0.55));
+}
+
+.synthwave-home .sw-page {
+  position: relative; z-index: 1;
+  width: 100%;
+  max-width: 880px;
+  padding: 64px 40px 130px;
+}
+
+/* ---------- top bar ---------- */
+.synthwave-home .sw-topbar {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sw-ink-3);
+  margin-bottom: 36px;
+}
+.synthwave-home .sw-topbar .sw-clock {
+  color: var(--sw-cyan);
+  font-size: 13px;
+  text-shadow: 0 0 14px rgba(30,227,255,0.7);
+}
+.synthwave-home .sw-topbar .sw-right { margin-left: auto; display: flex; gap: 18px; }
+.synthwave-home .sw-topbar .sw-ok { color: var(--sw-lime); text-shadow: 0 0 10px rgba(125,255,122,0.6); }
+
+/* ---------- header ---------- */
+.synthwave-home .sw-h1 {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+  font-size: clamp(34px, 5vw, 50px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.06;
+}
+.synthwave-home .sw-h1 .sw-grad {
+  background: linear-gradient(92deg, var(--sw-magenta), var(--sw-violet) 55%, var(--sw-cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 18px rgba(255,45,149,0.4));
+  animation: sw-flicker 7s infinite;
+}
+@keyframes sw-flicker {
+  0%, 91%, 94%, 100% { opacity: 1; }
+  92% { opacity: 0.65; }
+  93% { opacity: 0.9; }
+}
+.synthwave-home .sw-h1 .sw-dim { color: var(--sw-ink-3); font-weight: 600; }
+
+.synthwave-home .sw-search {
+  margin-top: 28px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: var(--sw-panel);
+  border: 1px solid var(--sw-line);
+  backdrop-filter: blur(18px);
+  color: var(--sw-ink-3);
+  font-size: 15px;
+  cursor: pointer;
+  transition: border-color .25s, box-shadow .25s;
+}
+.synthwave-home .sw-search:hover {
+  border-color: rgba(30,227,255,0.35);
+  box-shadow: 0 0 0 1px rgba(30,227,255,0.15), 0 0 24px rgba(30,227,255,0.08);
+}
+.synthwave-home .sw-search kbd {
+  margin-left: auto;
+  font-family: var(--sw-mono);
+  font-size: 11px;
+  color: var(--sw-ink-2);
+  border: 1px solid var(--sw-line);
+  border-radius: 6px;
+  padding: 2px 7px;
+  background: none;
+}
+
+/* ---------- bare neon icons ---------- */
+.synthwave-home .sw-grid {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+  gap: 36px 12px;
+}
+.synthwave-home .sw-app {
+  --c: var(--sw-magenta);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  color: var(--sw-ink);
+  outline: none;
+}
+.synthwave-home .sw-app .sw-glyph {
+  position: relative;
+  display: grid;
+  place-items: center;
+  transition: transform .25s cubic-bezier(.2,.8,.2,1);
+}
+.synthwave-home .sw-app .sw-glyph::before {
+  content: "";
+  position: absolute;
+  width: 90px; height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--c) 22%, transparent), transparent 70%);
+  transition: opacity .25s, transform .25s;
+}
+.synthwave-home .sw-app svg {
+  position: relative;
+  width: 52px; height: 52px;
+  fill: none;
+  stroke: var(--c);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter:
+    drop-shadow(0 0 4px color-mix(in srgb, var(--c) 90%, transparent))
+    drop-shadow(0 0 14px color-mix(in srgb, var(--c) 55%, transparent));
+  transition: filter .25s;
+}
+.synthwave-home .sw-app:hover .sw-glyph { transform: translateY(-5px) scale(1.07); }
+.synthwave-home .sw-app:hover .sw-glyph::before { transform: scale(1.25); }
+.synthwave-home .sw-app:hover svg {
+  filter:
+    drop-shadow(0 0 5px #fff)
+    drop-shadow(0 0 10px color-mix(in srgb, var(--c) 95%, transparent))
+    drop-shadow(0 0 26px color-mix(in srgb, var(--c) 70%, transparent));
+}
+.synthwave-home .sw-app .sw-label {
+  font-family: var(--sw-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sw-ink-2);
+  transition: color .2s, text-shadow .2s;
+}
+.synthwave-home .sw-app:hover .sw-label {
+  color: var(--sw-ink);
+  text-shadow: 0 0 10px color-mix(in srgb, var(--c) 60%, transparent);
+}
+
+.synthwave-home .c-magenta { --c: var(--sw-magenta); }
+.synthwave-home .c-cyan    { --c: var(--sw-cyan); }
+.synthwave-home .c-violet  { --c: var(--sw-violet); }
+.synthwave-home .c-lime    { --c: var(--sw-lime); }
+.synthwave-home .c-amber   { --c: var(--sw-amber); }
+.synthwave-home .c-pink    { --c: var(--sw-pink); }
+
+/* ---------- quick actions ---------- */
+.synthwave-home .sw-actions {
+  margin-top: 52px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.synthwave-home .sw-action {
+  font-family: var(--sw-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sw-ink-2) !important;
+  border: 1px solid var(--sw-line);
+  border-radius: 999px;
+  padding: 8px 16px;
+  background: var(--sw-panel);
+  backdrop-filter: blur(12px);
+  transition: color .2s, border-color .2s, box-shadow .2s;
+}
+.synthwave-home .sw-action:hover {
+  color: var(--sw-cyan) !important;
+  border-color: rgba(30,227,255,0.4);
+  box-shadow: 0 0 16px rgba(30,227,255,0.15);
+}
+
+/* ---------- stats strip ---------- */
+.synthwave-home .sw-stats {
+  margin-top: 44px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--sw-line);
+  border-bottom: 1px solid var(--sw-line);
+}
+.synthwave-home .sw-stat { padding: 18px 6px; text-align: center; }
+.synthwave-home .sw-stat + .sw-stat { border-left: 1px solid var(--sw-line); }
+.synthwave-home .sw-stat .sw-num {
+  font-family: var(--sw-mono);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--sw-ink);
+  text-shadow: 0 0 16px rgba(139,92,246,0.5);
+}
+.synthwave-home .sw-stat .sw-k {
+  margin-top: 5px;
+  font-family: var(--sw-mono);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sw-ink-3);
+}
+
+/* ---------- cards ---------- */
+.synthwave-home .sw-cards {
+  margin-top: 44px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 16px;
+}
+.synthwave-home .sw-card {
+  background: var(--sw-panel);
+  border: 1px solid var(--sw-line);
+  border-radius: 18px;
+  backdrop-filter: blur(18px);
+  padding: 20px 22px;
+}
+.synthwave-home .sw-card .sw-h2 {
+  font-family: var(--sw-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sw-ink-2);
+  margin-bottom: 14px;
+}
+.synthwave-home .sw-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 9px 0;
+  border-top: 1px solid var(--sw-line);
+  font-size: 14.5px;
+  color: var(--sw-ink) !important;
+}
+.synthwave-home .sw-row:first-of-type { border-top: 0; }
+.synthwave-home .sw-row .sw-title { font-weight: 500; transition: text-shadow .2s, color .2s; }
+.synthwave-home .sw-row:hover .sw-title { color: #fff; text-shadow: 0 0 12px rgba(30,227,255,0.6); }
+.synthwave-home .sw-row .sw-meta {
+  margin-left: auto;
+  font-family: var(--sw-mono);
+  font-size: 10.5px;
+  color: var(--sw-ink-3);
+  white-space: nowrap;
+}
+.synthwave-home .sw-dot {
+  width: 7px; height: 7px; border-radius: 50%; flex: none;
+  transform: translateY(-1px);
+  box-shadow: 0 0 8px currentColor;
+}
+.synthwave-home .sw-pinned { margin-top: 16px; }
+
+/* ---------- transmission ---------- */
+.synthwave-home .sw-transmission {
+  margin-top: 44px;
+  border-left: 2px solid var(--sw-magenta);
+  padding: 4px 0 4px 20px;
+  box-shadow: -2px 0 14px -4px rgba(255,45,149,0.5);
+}
+.synthwave-home .sw-transmission .sw-k {
+  font-family: var(--sw-mono);
+  font-size: 9px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--sw-magenta);
+  text-shadow: 0 0 10px rgba(255,45,149,0.5);
+}
+.synthwave-home .sw-transmission .sw-q {
+  margin-top: 8px; font-size: 15px; color: var(--sw-ink-2); font-style: italic;
+}
+
+.synthwave-home .sw-footer {
+  margin-top: 56px;
+  font-family: var(--sw-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--sw-ink-3);
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ---------- internal-link cleanup ---------- */
+.synthwave-home .sw-root a.internal-link,
+.synthwave-home .sw-root a.external-link {
+  color: inherit;
+  background: none;
+  text-decoration: none;
+}
+.synthwave-home .sw-root a.external-link::after { display: none; }
+.synthwave-home .sw-root .external-link { background-image: none !important; padding-right: 0 !important; }
+
+@media (max-width: 640px) {
+  .synthwave-home .sw-page { padding: 44px 22px 110px; }
+  .synthwave-home .sw-cards { grid-template-columns: 1fr; }
+  .synthwave-home .sw-stats { grid-template-columns: repeat(2, 1fr); }
+  .synthwave-home .sw-stat:nth-child(3) { border-left: 0; }
+  .synthwave-home .sw-stat:nth-child(n+3) { border-top: 1px solid var(--sw-line); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .synthwave-home * { transition: none !important; animation: none !important; }
+}
